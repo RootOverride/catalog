@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Catalogo Enlaces{% endblock %}
+
+{% block content %}
+{% for Catalog in catalog_list %}
+        <div class="col-3">
+            <article class="margin-b-big stack__cards__card stack__cards__card-main">
+                    <div class="bottom-portion text-center">
+                        <img src="{{Catalog.image.url}}" class="img-fluid" alt="logo clínico">
+                    </div>
+                <div class="stack__cards__card__info">
+                    <h5 class="margin-t-reset">
+                        <a href="{{Catalog.link}}">{{Catalog.title}}</a>
+                    </h5>
+                        {% if Catalog.alert %}
+                            <div class="alert alert-danger">{{Catalog.alert}}</div>
+                        {% endif %}
+                    <!---->
+                    <p class="hide">
+                        {{Catalog.claves}}
+                    </p>
+                </div>
+                <div class="stack__cards__card__footer">
+                        <span aria-hidden="true">
+                        {{Catalog.description}}
+                        </span>
+                        <div class="btn-container">
+                            <button type="button" class="btn btn-rounded btn-success" onClick="window.open('{{Catalog.link}}');">Iniciar</button>
+                        </div>
+                </div>
+            </article>
+        </div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta content="IE=edge" http-equiv="X-UA-Compatible">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+
+		{% load static %}
+		<script src="{% static 'core/js/webfont.js' %}"></script>
+		<script src="{% static 'core/js/iwb8jlp.js' %}"></script>
+
+
+		<meta content="#00437B" name="theme-color">
+
+
+		<link href="{% static 'core/css/hex.min.css' %}" rel="stylesheet">
+		<link href="{% static 'core/css/styles.css' %}" rel="stylesheet">
+		<title>
+		Catalogo de Enlaces
+		</title>
+
+		
+		<link href="{% static 'core/css/application-8e0d1e6fe93df07bde3b4448fc164e780806fc54f65941020c4f4332232d85eb.css' %}" rel="stylesheet">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	</head>
+	<body class="stacks-index  stacks index">
+		<div>
+			<div class="top-portion text-center">
+				<img src="{% static 'core/img/logo_CESFAM_SIT.png' %}" class="img-fluid" alt="logo administrativo">
+				<h3>Accede a una mejor experiencia para la APS Digital</h3>
+			</div> 
+		</div>
+		<main>
+			<div class="stack">
+				<header class="container">
+					<label for="stackSearch">
+					<!--<h2>Buscar Enlaces</h2>-->
+					</label>
+				<input aria-controls="stacks" id="stackSearch" placeholder="Busqueda de Enlaces..." role="search" type="search">
+				</header>
+
+				<section>
+					<div class="container stack__cards margin-v-giant padding-h-big">
+						<div aria-live="polite" class="row collapse-3-b-desktop collapse-2-b-tablet collapse-b-phone-land" id="stacks" role="region">
+							<div class="col-8 stack__cards__empty hide">
+								<div class="type-bigger margin-t-normal text-c">
+								No encontramos ningún enlace que coincida con tu búsqueda.
+								</div>
+							</div>
+							<!--####INICIO BLOQUE####-->
+							{% block content %}{% endblock %}
+							
+							<!--####FIN BLOQUE####-->
+							
+						</div>
+					</div>
+				</section>
+				<hr class="separator separator-50 separator-small margin-v-bigger">
+			</div>
+		</main>
+
+
+		<script crossorigin="anonymous" src="{% static 'core/js/bundle.min.js' %}"></script>
+		<script src="{% static 'core/js/hex.min.js' %}"></script>
+		<script src="{% static 'core/js/jquery.min.js' %}"></script>
+		<!-- Javascript code to attach the google captcha verification event to the form -->
+		<script>
+		  function onloadRecaptcha() {
+			$('.g-recaptcha').each(function(i) {
+			  var $form = $(this).parents('form');
+			  var id = $(this).attr('id');
+			  var $button;
+		  
+			  // Render the recaptcha explicitly
+			  grecaptcha.render(id, {
+				'sitekey': '6LcVHTEUAAAAAKMMxsspBHmrR7bXkMnNT_jyEEMn',
+				'callback': function(e) {
+				  onSubmitForm('#' + id);
+				},
+				'badge': 'inline',
+				'size': 'invisible'
+			  });
+		  
+			  // Get the button
+			  if ($form.find('input[type="submit"]').length > 0) {
+				$button = $form.find('input[type="submit"]');
+			  } else if ($form.find('button[type="submit"]').length > 0) {
+				$button = $form.find('button[type="submit"]');
+			  } else {
+				$button = $form.find('button');
+			  }
+		  
+			  // Subscribe to the event
+			  $button.on('click', function(e) {
+				if($form[0].checkValidity()) {
+				  e.preventDefault();
+				  // grecaptcha uses the rendering index as the identifier. We must use this
+				  // this index to avoid execute wrong captcha validations
+				  grecaptcha.execute(i);
+				}
+			  });
+			});
+		  };
+		  
+		  // Send the form
+		  function onSubmitForm(id) {
+			$(id).parents('form').submit();
+		  }
+		</script>
+
+
+		<script src="{% static 'core/js/application-f676afece195309c87be56174f43495b5aa6beb2f7e3285b3a98fdbecf900f38.js' %}"></script>
+
+
+	</body>
+</html>
